@@ -77,6 +77,9 @@ a:link {
 a:hover {
   color: var(--link-color-hover);
 }
+a:visited {
+  color: var(--link-color);
+}
 a:active {
   color: var(--link-color-active);
 }
