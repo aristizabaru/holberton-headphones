@@ -22,11 +22,10 @@
   --font-family-base: "Source Sans Pro", "Open Sans", sans-serif;
   --font-size-small: 0.8rem;
   --font-size-regular: 1rem;
-  --font-size-large: 2rem;
-  --font-size-x-large: 2.5rem;
+  --font-size-large: 1.5rem;
+  --font-size-x-large: 2rem;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
-  --font-weight-black: 900;
   --line-height-small: 1.2;
   --line-height-regular: 1.5;
   --line-height-big: 1.8;
@@ -67,8 +66,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-family-title);
-  font-size: var(--font-size-large);
-  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-x-large);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-small);
 }
 a:link {
@@ -139,11 +138,13 @@ a:active {
 
 .header {
   height: 800px;
+  min-height: 100vh;
   background-color: var(--color-black);
   background-image: url(images/headphones_hero_1.jpg);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+  overflow-x: visible;
 }
 .header .container {
   height: 100%;
@@ -221,8 +222,7 @@ a:active {
   text-align: center;
   padding-bottom: 5vw;
 }
-.section-hero h1 {
-  font-weight: var(--font-weight-bold);
+.section-hero h2 {
   margin-bottom: 0;
 }
 .section-hero p {
