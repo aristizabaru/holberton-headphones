@@ -41,6 +41,8 @@
   --padding-section: 5vw;
   /* form animation */
   --form-transition: all 0.2s ease-out;
+  /* cards animation */
+  --card-transition: all 0.3s ease-out;
 }
 *,
 *:before,
@@ -520,4 +522,12 @@ button {
   .footer .container {
     flex-direction: column;
   }
+}
+
+/* ANIMATION */
+.card-item:hover {
+  transform: translateY(-1rem);
+}
+.card-item {
+  transition: var(--card-transition);
 }
