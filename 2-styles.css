@@ -389,6 +389,18 @@ a:active {
   font-size: 6rem;
 }
 
+@media screen and (max-width: 767px) {
+  #results {
+    background: linear-gradient(
+        0deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(7, 22, 41, 1) 50%,
+        rgba(7, 22, 41, 0) 100%
+      ),
+      url(images/headphones_hero_2.jpg);
+    background-position: 50% -10%;
+  }
+}
 @media screen and (min-width: 481px) and (max-width: 767px) {
   .results p {
     padding: 0 5vw;
