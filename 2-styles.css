@@ -1,0 +1,408 @@
+/* SUMMARY
+1. GLOBAL
+2. LAYOUT
+2.1 HEADER
+2.2 MAIN
+2.3 FOOTER
+*/
+
+/* GLOBAL
+  ============================= */
+
+:root {
+  /* global */
+  --rem-size: 16px;
+  /* colors */
+  --color-red: #ff6565;
+  --color-white: #ffffff;
+  --color-black: #071629;
+  /* text */
+  --text-color: var(--color-black);
+  --font-family-title: "Source Sans Pro", "Open Sans", sans-serif;
+  --font-family-base: "Source Sans Pro", "Open Sans", sans-serif;
+  --font-size-small: 0.8rem;
+  --font-size-regular: 1rem;
+  --font-size-large: 1.5rem;
+  --font-size-x-large: 2rem;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --line-height-small: 1.2;
+  --line-height-regular: 1.5;
+  --line-height-big: 1.8;
+  /* links */
+  --link-color: var(--color-black);
+  --link-color-hover: var(--color-red);
+  --link-color-active: var(--color-red);
+  --button-opacity: 0.9;
+  /* hamburguer */
+  --hamburguer-top-padding: 2.5rem;
+  --hamburguer-transition: all 0.2s ease-out;
+  /* section */
+  --padding-section: 5vw;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: var(--rem-size);
+}
+body {
+  color: var(--text-color);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-regular);
+  /* font smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-x-large);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-small);
+}
+a:link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-color-hover);
+}
+a:visited {
+  color: var(--link-color);
+}
+a:active {
+  color: var(--link-color-active);
+}
+.cta-button {
+  width: max-content;
+  margin-inline: auto;
+  padding: 0.7em 2.3em;
+  display: block;
+  background-color: var(--link-color-active);
+  border-radius: 2em;
+  text-transform: uppercase;
+}
+.cta-button:hover {
+  color: var(--link-color);
+  opacity: var(--button-opacity);
+}
+.container {
+  width: min(90%, 1000px);
+  margin-inline: auto;
+}
+.padding-section {
+  padding: var(--padding-section) 0;
+}
+[data-section-theme="dark"] {
+  --link-color: var(--color-white);
+  color: var(--color-white);
+}
+.off-screen {
+  left: -100vw;
+  position: absolute;
+}
+.skip-link {
+  background: var(--color-black);
+  color: var(--color-white);
+  left: 0;
+  padding: 0.7rem;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  z-index: 10;
+  transform: translateY(-1rem);
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+.skip-link:focus {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Helpers
+      ============================= */
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* HEADER
+  ============================= */
+
+.header {
+  height: 800px;
+  min-height: 100vh;
+  background-color: var(--color-black);
+  background-image: url(images/headphones_hero_1.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  overflow-x: visible;
+}
+.header .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+/* Navegation */
+.navegation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+}
+/* Hamburguer */
+.menu-btn {
+  display: none;
+}
+.menu-icon {
+  cursor: pointer;
+  padding: var(--hamburguer-top-padding) 0;
+  position: relative;
+  user-select: none;
+  display: none;
+}
+.menu-icon .navicon {
+  background: var(--color-white);
+  display: block;
+  width: 1.5rem;
+  height: 0.2rem;
+  position: relative;
+  transition: var(--hamburguer-transition);
+}
+.menu-icon .navicon::before,
+.menu-icon .navicon::after {
+  content: "";
+  display: block;
+  width: 150%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-white);
+  transition: var(--hamburguer-transition);
+}
+.menu-icon .navicon::before {
+  top: 0.7rem;
+}
+.menu-icon .navicon::after {
+  top: -0.7rem;
+}
+.menu-btn:checked ~ .navbar-menu {
+  display: block;
+}
+.header .menu-btn:checked + .menu-icon .navicon {
+  background: transparent;
+}
+.menu-btn:checked + .menu-icon .navicon::before {
+  transform: rotate(-45deg);
+}
+.menu-btn:checked + .menu-icon .navicon::after {
+  transform: rotate(45deg);
+}
+.menu-btn:checked + .menu-icon .navicon::before,
+.menu-btn:checked + .menu-icon .navicon::after {
+  top: 0;
+}
+
+/* Hero */
+.section-hero {
+  margin-top: auto;
+  text-align: center;
+  padding-bottom: var(--padding-section);
+}
+.section-hero h2 {
+  margin-bottom: 0;
+}
+.section-hero p {
+  line-height: var(--line-height-big);
+  padding: 0 15vw;
+}
+.section-hero a {
+  margin-top: 2.5vw;
+  margin-bottom: 4em;
+}
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .nav {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  .section-hero p {
+    padding: 0 5vw;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header {
+    background: linear-gradient(
+        0deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(7, 22, 41, 1) 20%,
+        rgba(7, 22, 41, 0) 100%
+      ),
+      url(images/headphones_hero_1.jpg);
+    background-position: 35% top;
+  }
+  /* Hamburguer */
+  .navegation {
+    position: relative;
+    flex-direction: column;
+    padding-top: calc(var(--hamburguer-top-padding) / 1.8);
+  }
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .navbar-menu {
+    display: none;
+  }
+  .nav {
+    flex-direction: column;
+  }
+  /* Hero */
+  .section-hero {
+    padding-bottom: 10vw;
+  }
+  .section-hero p {
+    padding: 0 0;
+  }
+}
+
+/* What we do
+  ============================= */
+.about {
+  text-align: center;
+}
+.about p {
+  line-height: var(--line-height-big);
+  padding: 0 12vw;
+}
+.about-cards {
+  padding-top: var(--padding-section);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style: none;
+}
+.card-item {
+  max-width: 200px;
+  text-align: center;
+}
+.about-cards h3 {
+  font-size: var(--font-size-large);
+}
+
+/* icons */
+.holberton_school-icon-ic_sound,
+.holberton_school-icon-ic_video,
+.holberton_school-icon-ic_music,
+.holberton_school-icon-ic_hearing {
+  color: var(--color-red);
+  font-size: 6rem;
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .about p {
+    padding: 0 5vw;
+  }
+  .card-item {
+    max-width: 250px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .about-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about p {
+    padding: 0 0;
+  }
+}
+
+/* Results
+  ============================= */
+#results {
+  background-color: var(--color-black);
+  background-image: url(images/headphones_hero_2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left top;
+  text-align: center;
+}
+.results p {
+  line-height: var(--line-height-big);
+  padding: 0 12vw;
+}
+.results-cards {
+  padding-top: var(--padding-section);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style: none;
+}
+.card-item strong {
+  font-size: calc(var(--font-size-x-large) + 1rem);
+}
+.results-cards .card-item p {
+  margin-top: 0;
+}
+.results-cards .card-item {
+  padding: 3rem 2.5rem 1rem;
+  max-width: 200px;
+  text-align: center;
+  font-size: var(--font-size-small);
+  background-image: url(images/pentagone.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* icons */
+.holberton_school-icon-ic_sound,
+.holberton_school-icon-ic_video,
+.holberton_school-icon-ic_music,
+.holberton_school-icon-ic_hearing {
+  color: var(--color-red);
+  font-size: 6rem;
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .results p {
+    padding: 0 5vw;
+  }
+  .card-item {
+    max-width: 250px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .results-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .results p {
+    padding: 0;
+  }
+}
